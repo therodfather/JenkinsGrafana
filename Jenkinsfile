@@ -10,7 +10,7 @@ pipeline {
     
     stage('Provision') {
       steps { 
-        sh 'cd /etc/ansible && ansible-playbook dockergrafana.yml -i vultr.yml && ansible graf -m shell -a "docker run -d --name=grafana -p 3000:3000 grafana/grafana" -i vultr.yml'
+        sh 'cd /etc/ansible && ansible graf -m shell -a "docker pull grafana/grafana" && ansible graf -m shell -a "docker run -d --name=grafana -p 3000:3000 grafana/grafana" -i vultr.yml'
       }
     }
     
